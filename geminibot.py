@@ -8,7 +8,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Birbaşa daxil edilmiş API açarları
-TELEGRAM_BOT_TOKEN = "7641401806:AAFrTBuoLuaDlF6nnOLpGHLyzUnnmU5X9Zo"
+TELEGRAM_BOT_TOKEN = "7641401806:AAEiRUN5ZmUtJ2RXuFvXPDJg00uvlGoRWNA"
 GOOGLE_API_KEY = "AIzaSyDfMJbYZTVXB8AbENSGEnch8uQZw0EOuvg"
 
 # Gemini API açarını konfiqurasiya et
