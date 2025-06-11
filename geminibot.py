@@ -15,7 +15,7 @@ GOOGLE_API_KEY = "AIzaSyDfMJbYZTVXB8AbENSGEnch8uQZw0EOuvg"
 genai.configure(api_key=GOOGLE_API_KEY)
 
 # Model obyektini yarat
-model = genai.GenerativeModel("gemini-1.5-flash")
+model = genai.GenerativeModel("gemini-2.5-pro-preview-06-05")
 
 # /start komandası
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
