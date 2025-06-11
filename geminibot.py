@@ -1,7 +1,5 @@
 import logging
-import os
 import google.generativeai as genai
-from dotenv import load_dotenv
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, ContextTypes, filters
 
@@ -9,12 +7,9 @@ from telegram.ext import Application, CommandHandler, MessageHandler, ContextTyp
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Yüklə .env faylını
-load_dotenv()
-
-# API açarlarını götür
-TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+# Birbaşa daxil edilmiş API açarları
+TELEGRAM_BOT_TOKEN = "7641401806:AAFrTBuoLuaDlF6nnOLpGHLyzUnnmU5X9Zo"
+GOOGLE_API_KEY = "AIzaSyDfMJbYZTVXB8AbENSGEnch8uQZw0EOuvg"
 
 # Gemini API açarını konfiqurasiya et
 genai.configure(api_key=GOOGLE_API_KEY)
@@ -22,11 +17,11 @@ genai.configure(api_key=GOOGLE_API_KEY)
 # Model obyektini yarat
 model = genai.GenerativeModel("gemini-1.5-flash")
 
-# Start komandası
+# /start komandası
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Salam! Mən Gemini ilə işləyən bir Telegram botuyam. Mənə sual ver!")
 
-# Mesajlara cavab
+# İstifadəçi mesajlarına cavab
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_message = update.message.text
     try:
@@ -36,7 +31,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         logger.error(f"Gemini xətası: {e}")
         await update.message.reply_text("Üzr istəyirəm, cavab alarkən xəta baş verdi.")
 
-# Botu işə sal
+# Botun əsas funksiyası
 def main():
     app = Application.builder().token(TELEGRAM_BOT_TOKEN).build()
 
